@@ -46,7 +46,7 @@ public class Home extends JFrame implements ActionListener, WindowListener {
         buttons_p.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //definizione del bordo del pannello bottoni
         buttons_p.add(newgame_b); //aggiunta del bottone nuova partita al pannello bottoni
         newgame_b.setFont(bold); //impostazione del font del bottone nuova partita
-        newgame_b.addActionListener(this); //aggiunta dell'listener al bottone nuova partita
+        newgame_b.addActionListener(this); //aggiunta del listener al bottone nuova partita
         buttons_p.add(scoreboard_b); //aggiunta del bottone scoreboard al pannello bottoni
         scoreboard_b.setFont(bold); //impostazione del font del bottone nuova partita
         buttons_p.add(recentgames_b); //aggiunta del bottone partite recenti al pannello bottoni
