@@ -32,12 +32,16 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         ships.setLayout(new GridLayout(2, 2,10,10));
         ships.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         ships.add(ship1x1);
+        ship1x1.setTransferHandler(new TransferHandler("icon"));
         ship1x1.addActionListener(this);
         ships.add(ship2x1);
+        ship2x1.setTransferHandler(new TransferHandler("icon"));
         ship2x1.addActionListener(this);
         ships.add(ship3x1);
+        ship3x1.setTransferHandler(new TransferHandler("icon"));
         ship3x1.addActionListener(this);
         ships.add(ship4x1);
+        ship4x1.setTransferHandler(new TransferHandler("icon"));
         ship4x1.addActionListener(this);
 
         gridPanel.setLayout(new GridLayout(10, 10));
