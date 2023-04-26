@@ -63,15 +63,15 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
     public void actionPerformed(ActionEvent e) {
         if (ship1x1 == e.getSource()) {
             ship1x1.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-            //grid1x1();
+            grid1x1();
         }
         else if (ship2x1 == e.getSource()) {
             ship2x1.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 2));
-            //grid2x1();
+            grid2x1();
         }
         else if (ship3x1 == e.getSource()) {
             ship3x1.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
-            //grid3x1();
+            grid3x1();
         }
         else if (ship4x1 == e.getSource()) {
             ship4x1.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
@@ -79,7 +79,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         }
     }
 
-    /*public void grid1x1() {
+    public void grid1x1() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 grid[i][j].addActionListener(new ActionListener() {
@@ -89,8 +89,6 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                         button.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     }
                 });
-                //ship1x1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-                //i = 10;
             }
         }
     }
@@ -114,8 +112,6 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                         }
                     }
                 });
-                //i = 10;
-                //ship2x1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
             }
         }
     }
@@ -152,8 +148,6 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                         }
                     }
                 });
-                //i = 10;
-                //ship3x1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
             }
         }
     }
@@ -170,7 +164,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                 });
             }
         }
-    }*/
+    }
 
     @Override
     public void windowOpened(WindowEvent e) {
