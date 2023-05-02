@@ -47,6 +47,8 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
     JButton ship4x1_l = new JButton(new ImageIcon(ship4x1_sc));
     JButton ship5x1_l = new JButton(new ImageIcon(ship5x1_sc));
 
+    JButton[][] gridButtons = new JButton[10][10];
+
     //dichiarazione dei pannelli
     JPanel ships = new JPanel(); //pannello delle navi
     JPanel grid = new JPanel(); //pannello contenente la griglia
@@ -95,8 +97,12 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         //gestione pannello griglia
         grid.setLayout(new GridLayout(10,10));
         grid.setBorder(BorderFactory.createEmptyBorder(10,0,10,10));
-        for (int i = 0; i < 100; i++) {
-            grid.add(new JButton());
+        //aggiunta dei bottoni alla griglia
+        for (int i = 0; i < gridButtons.length; i++) {
+            for (int j = 0; j < gridButtons[i].length; j++) {
+                gridButtons[i][j] = new JButton();
+                grid.add(gridButtons[i][j]);
+            }
         }
 
 
