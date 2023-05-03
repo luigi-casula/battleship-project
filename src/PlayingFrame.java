@@ -2,17 +2,14 @@ import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class PlayingFrame extends JFrame implements ActionListener, WindowListener {
+public class PlayingFrame extends JFrame implements ActionListener, WindowListener, MouseListener {
 
     //dichiarazione delle immagini delle navi
     BufferedImage ship2x1 = ImageIO.read(new File("src/images/ship_2x1.png")); //cacciatorpediniere
@@ -104,7 +101,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                 grid.add(gridButtons[i][j]);
             }
         }
-
+        //gridButtons[0][0].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
 
         //altri parametri della finestra
         setVisible(true);
@@ -115,7 +112,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == ship2x1_l) {
-
+            //ship2x1_l.setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
         }
         if (e.getSource() == ship1_3x1_l) {
 
@@ -164,6 +161,31 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
 
     @Override
     public void windowDeactivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
 
     }
 }
