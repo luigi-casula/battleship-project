@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class PlayingFrame extends JFrame implements ActionListener, WindowListener, MouseListener {
 
@@ -98,6 +99,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         for (int i = 0; i < gridButtons.length; i++) {
             for (int j = 0; j < gridButtons[i].length; j++) {
                 gridButtons[i][j] = new JButton();
+                gridButtons[i][j].addMouseListener(this);
                 grid.add(gridButtons[i][j]);
             }
         }
@@ -181,11 +183,23 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        for (int i = 0; i < gridButtons.length; i++) {
+            for (int j = 0; j < gridButtons[i].length; j++) {
+                if (e.getSource() == gridButtons[i][j]) {
+                    gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
+                }
+            }
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
+        for (int i = 0; i < gridButtons.length; i++) {
+            for (int j = 0; j < gridButtons[i].length; j++) {
+                if (e.getSource() == gridButtons[i][j]) {
+                    //gridButtons[i][j].setBorder(original);
+                }
+            }
+        }
     }
 }
