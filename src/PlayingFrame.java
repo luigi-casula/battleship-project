@@ -342,6 +342,14 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         }
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+
+
+
     //metodi inutilizzati
 
     @Override
@@ -376,11 +384,6 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
 
     }
 
