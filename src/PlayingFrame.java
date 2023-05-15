@@ -87,6 +87,11 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         ships.add(ship4x1_l);
         ships.add(ship5x1_l);
 
+        ship1_3x1_l.setEnabled(false);
+        ship2_3x1_l.setEnabled(false);
+        ship4x1_l.setEnabled(false);
+        ship5x1_l.setEnabled(false);
+
         ship2x1_l.setBorder(null);
         ship2x1_l.setBackground(new Color(238, 238, 238));
         ship1_3x1_l.setBorder(null);
@@ -130,10 +135,6 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         if (e.getSource() == ship2x1_l) {
             ship2x1_l_state = true;
             ship2x1_l.setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
-            ship1_3x1_l.setEnabled(false);
-            ship2_3x1_l.setEnabled(false);
-            ship4x1_l.setEnabled(false);
-            ship5x1_l.setEnabled(false);
         }
         if (e.getSource() == ship1_3x1_l) {
             ship1_3x1_l_state = true;
@@ -194,33 +195,34 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                             boolean isClicked = false;
                             @Override
                             public void mouseClicked(MouseEvent e) {
-                                int x = 0;
                                 for (int i = 0; i < gridButtons.length; i++) {
                                     for (int j = 0; j < gridButtons[i].length; j++) {
-                                        if (e.getSource() == gridButtons[i][j]) {
-                                            if (x < 4) {
+                                        if (e.getSource() == gridButtons[i][j] && ship2x1_l_state) {
                                                 if (j == 9) {
+                                                    isClicked = true;
                                                     gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
                                                     gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
-                                                    x++;
+                                                    ship2x1_l.setBorder(originalShip);
+                                                    ship2x1_l.setEnabled(false);
+                                                    ship1_3x1_l.setEnabled(true);
+                                                    ship2_3x1_l.setEnabled(true);
+                                                    ship4x1_l.setEnabled(true);
+                                                    ship5x1_l.setEnabled(true);
+                                                    ship2x1_l_state = false;
                                                 }
                                                 else if (j < 9) {
+                                                    isClicked = true;
                                                     gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
                                                     gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
-                                                    x++;
+                                                    ship2x1_l.setBorder(originalShip);
+                                                    ship2x1_l.setEnabled(false);
+                                                    ship1_3x1_l.setEnabled(true);
+                                                    ship2_3x1_l.setEnabled(true);
+                                                    ship4x1_l.setEnabled(true);
+                                                    ship5x1_l.setEnabled(true);
+                                                    ship2x1_l_state = false;
                                                 }
                                             }
-                                            else {
-                                                ship2x1_l.setBorder(originalShip);
-                                                ship2x1_l.setEnabled(true);
-                                                ship1_3x1_l.setEnabled(true);
-                                                ship2_3x1_l.setEnabled(true);
-                                                ship4x1_l.setEnabled(true);
-                                                ship5x1_l.setEnabled(true);
-                                                ship2x1_l_state = false;
-                                            }
-                                            isClicked = true; // imposta isClicked su true quando il mouse viene cliccato
-                                        }
                                     }
                                 }
                             }
@@ -252,7 +254,95 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
             for (int i = 0; i < gridButtons.length; i++) {
                 for (int j = 0; j < gridButtons[i].length; j++) {
                     if (e.getSource() == gridButtons[i][j]) {
-                        gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                        if (j == 9) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                            gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                            gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                        }
+                        else if (j == 8) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                            gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                            gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                        }
+                        else if (j < 8) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                            gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                            gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                        }
+                        gridButtons[i][j].addMouseListener(new MouseAdapter() {
+                            boolean isClicked = false;
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                for (int i = 0; i < gridButtons.length; i++) {
+                                    for (int j = 0; j < gridButtons[i].length; j++) {
+                                        if (e.getSource() == gridButtons[i][j] && ship1_3x1_l_state) {
+                                            if (j == 9) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                ship2x1_l.setBorder(originalShip);
+                                                ship1_3x1_l.setEnabled(false);
+                                                ship2_3x1_l.setEnabled(true);
+                                                ship4x1_l.setEnabled(true);
+                                                ship5x1_l.setEnabled(true);
+                                                ship1_3x1_l_state = false;
+                                            }
+                                            else if (j == 8) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                ship1_3x1_l.setBorder(originalShip);
+                                                ship1_3x1_l.setEnabled(false);
+                                                ship2_3x1_l.setEnabled(true);
+                                                ship4x1_l.setEnabled(true);
+                                                ship5x1_l.setEnabled(true);
+                                                ship1_3x1_l_state = false;
+                                            }
+                                            else if (j < 8) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                ship1_3x1_l.setBorder(originalShip);
+                                                ship1_3x1_l.setEnabled(false);
+                                                ship2_3x1_l.setEnabled(true);
+                                                ship4x1_l.setEnabled(true);
+                                                ship5x1_l.setEnabled(true);
+                                                ship1_3x1_l_state = false;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            @Override
+                            public void mouseExited(MouseEvent e) {
+                                if (!isClicked) { // reimposta il colore del bordo solo se isClicked è false
+                                    for (int i = 0; i < gridButtons.length; i++) {
+                                        for (int j = 0; j < gridButtons[i].length; j++) {
+                                            if (e.getSource() == gridButtons[i][j]) {
+                                                if (j == 9) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j-1].setBorder(original);
+                                                    gridButtons[i][j-2].setBorder(original);
+                                                }
+                                                else if (j == 8) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j-1].setBorder(original);
+                                                    gridButtons[i][j+1].setBorder(original);
+                                                }
+                                                else if (j < 8) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j+1].setBorder(original);
+                                                    gridButtons[i][j+2].setBorder(original);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
                     }
                 }
             }
@@ -261,7 +351,94 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
             for (int i = 0; i < gridButtons.length; i++) {
                 for (int j = 0; j < gridButtons[i].length; j++) {
                     if (e.getSource() == gridButtons[i][j]) {
-                        gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                        if (j == 9) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                            gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                            gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                        }
+                        else if (j == 8) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                            gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                            gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                        }
+                        else if (j < 8) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                            gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                            gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                        }
+                        gridButtons[i][j].addMouseListener(new MouseAdapter() {
+                            boolean isClicked = false;
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                for (int i = 0; i < gridButtons.length; i++) {
+                                    for (int j = 0; j < gridButtons[i].length; j++) {
+                                        if (e.getSource() == gridButtons[i][j] && ship1_3x1_l_state) {
+                                            if (j == 9) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                ship2x1_l.setBorder(originalShip);
+                                                ship1_3x1_l.setEnabled(false);
+                                                ship2_3x1_l.setEnabled(true);
+                                                ship4x1_l.setEnabled(true);
+                                                ship5x1_l.setEnabled(true);
+                                                ship1_3x1_l_state = false;
+                                            }
+                                            else if (j == 8) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                ship2x1_l.setBorder(originalShip);
+                                                ship1_3x1_l.setEnabled(false);
+                                                ship2_3x1_l.setEnabled(true);
+                                                ship4x1_l.setEnabled(true);
+                                                ship5x1_l.setEnabled(true);
+                                                ship2x1_l_state = false;
+                                            }
+                                            else if (j < 8) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
+                                                ship2_3x1_l.setBorder(originalShip);
+                                                ship2_3x1_l.setEnabled(false);
+                                                ship4x1_l.setEnabled(true);
+                                                ship5x1_l.setEnabled(true);
+                                                ship2_3x1_l_state = false;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            @Override
+                            public void mouseExited(MouseEvent e) {
+                                if (!isClicked) { // reimposta il colore del bordo solo se isClicked è false
+                                    for (int i = 0; i < gridButtons.length; i++) {
+                                        for (int j = 0; j < gridButtons[i].length; j++) {
+                                            if (e.getSource() == gridButtons[i][j]) {
+                                                if (j == 9) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j-1].setBorder(original);
+                                                    gridButtons[i][j-2].setBorder(original);
+                                                }
+                                                else if (j == 8) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j-1].setBorder(original);
+                                                    gridButtons[i][j+1].setBorder(original);
+                                                }
+                                                else if (j < 8) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j+1].setBorder(original);
+                                                    gridButtons[i][j+2].setBorder(original);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
                     }
                 }
             }
@@ -270,7 +447,125 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
             for (int i = 0; i < gridButtons.length; i++) {
                 for (int j = 0; j < gridButtons[i].length; j++) {
                     if (e.getSource() == gridButtons[i][j]) {
-                        gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                        if (j == 9) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j-3].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+
+                        }
+                        else if (j == 8) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                        }
+                        else if (j == 7) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                        }
+                        else if (j < 8) {
+                            gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                            gridButtons[i][j+3].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                        }
+                        gridButtons[i][j].addMouseListener(new MouseAdapter() {
+                            boolean isClicked = false;
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                for (int i = 0; i < gridButtons.length; i++) {
+                                    for (int j = 0; j < gridButtons[i].length; j++) {
+                                        if (e.getSource() == gridButtons[i][j] && ship1_3x1_l_state) {
+                                            if (j == 9) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j-3].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                ship4x1_l.setBorder(originalShip);
+                                                ship4x1_l.setEnabled(false);
+                                                ship5x1_l.setEnabled(true);
+                                                ship4x1_l_state = false;
+                                            }
+                                            else if (j == 8) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                ship4x1_l.setBorder(originalShip);
+                                                ship4x1_l.setEnabled(false);
+                                                ship5x1_l.setEnabled(true);
+                                                ship4x1_l_state = false;
+                                            }
+                                            else if (j == 7) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                ship4x1_l.setBorder(originalShip);
+                                                ship4x1_l.setEnabled(false);
+                                                ship5x1_l.setEnabled(true);
+                                                ship4x1_l_state = false;
+                                            }
+                                            else if (j < 7) {
+                                                isClicked = true;
+                                                gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                gridButtons[i][j+3].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
+                                                ship4x1_l.setBorder(originalShip);
+                                                ship4x1_l.setEnabled(false);
+                                                ship5x1_l.setEnabled(true);
+                                                ship4x1_l_state = false;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            @Override
+                            public void mouseExited(MouseEvent e) {
+                                if (!isClicked) { // reimposta il colore del bordo solo se isClicked è false
+                                    for (int i = 0; i < gridButtons.length; i++) {
+                                        for (int j = 0; j < gridButtons[i].length; j++) {
+                                            if (e.getSource() == gridButtons[i][j]) {
+                                                if (j == 9) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j-1].setBorder(original);
+                                                    gridButtons[i][j-2].setBorder(original);
+                                                    gridButtons[i][j-3].setBorder(original);
+                                                }
+                                                else if (j == 8) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j-1].setBorder(original);
+                                                    gridButtons[i][j-2].setBorder(original);
+                                                    gridButtons[i][j+1].setBorder(original);
+
+                                                }
+                                                else if (j == 7) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j-1].setBorder(original);
+                                                    gridButtons[i][j+1].setBorder(original);
+                                                    gridButtons[i][j+2].setBorder(original);
+
+                                                }
+                                                else if (j < 7) {
+                                                    gridButtons[i][j].setBorder(original);
+                                                    gridButtons[i][j+1].setBorder(original);
+                                                    gridButtons[i][j+2].setBorder(original);
+                                                    gridButtons[i][j+3].setBorder(original);
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
                     }
                 }
             }
@@ -288,7 +583,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if (ship2x1_l_state) {
+        /*if (ship2x1_l_state) {
             for (int i = 0; i < gridButtons.length; i++) {
                 for (int j = 0; j < gridButtons[i].length; j++) {
                     if (e.getSource() == gridButtons[i][j]) {
@@ -339,7 +634,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                     }
                 }
             }
-        }
+        }*/
     }
 
     @Override
