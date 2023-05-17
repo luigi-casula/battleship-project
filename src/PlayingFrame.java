@@ -202,6 +202,8 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                                                     isClicked = true;
                                                     gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
                                                     gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
+                                                    gridButtons[i][j].setEnabled(false);
+                                                    gridButtons[i][j-1].setEnabled(false);
                                                     ship2x1_l.setBorder(originalShip);
                                                     ship2x1_l.setEnabled(false);
                                                     ship1_3x1_l.setEnabled(true);
@@ -214,6 +216,8 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                                                     isClicked = true;
                                                     gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
                                                     gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
+                                                    gridButtons[i][j].setEnabled(false);
+                                                    gridButtons[i][j+1].setEnabled(false);
                                                     ship2x1_l.setBorder(originalShip);
                                                     ship2x1_l.setEnabled(false);
                                                     ship1_3x1_l.setEnabled(true);
@@ -231,7 +235,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                                 if (!isClicked) { // reimposta il colore del bordo solo se isClicked è false
                                     for (int i = 0; i < gridButtons.length; i++) {
                                         for (int j = 0; j < gridButtons[i].length; j++) {
-                                            if (e.getSource() == gridButtons[i][j]) {
+                                            if (e.getSource() == gridButtons[i][j] && gridButtons[i][j].isEnabled()) {
                                                 if (j == 9) {
                                                     gridButtons[i][j].setBorder(original);
                                                     gridButtons[i][j-1].setBorder(original);
@@ -281,6 +285,9 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                                                 gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
                                                 gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
                                                 gridButtons[i][j-2].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j].setEnabled(false);
+                                                gridButtons[i][j-1].setEnabled(false);
+                                                gridButtons[i][j-2].setEnabled(false);
                                                 ship2x1_l.setBorder(originalShip);
                                                 ship1_3x1_l.setEnabled(false);
                                                 ship2_3x1_l.setEnabled(true);
@@ -293,6 +300,9 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                                                 gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
                                                 gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
                                                 gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j].setEnabled(false);
+                                                gridButtons[i][j-1].setEnabled(false);
+                                                gridButtons[i][j+1].setEnabled(false);
                                                 ship1_3x1_l.setBorder(originalShip);
                                                 ship1_3x1_l.setEnabled(false);
                                                 ship2_3x1_l.setEnabled(true);
@@ -305,6 +315,9 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                                                 gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
                                                 gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
                                                 gridButtons[i][j+2].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
+                                                gridButtons[i][j].setEnabled(false);
+                                                gridButtons[i][j+1].setEnabled(false);
+                                                gridButtons[i][j+2].setEnabled(false);
                                                 ship1_3x1_l.setBorder(originalShip);
                                                 ship1_3x1_l.setEnabled(false);
                                                 ship2_3x1_l.setEnabled(true);
@@ -321,7 +334,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
                                 if (!isClicked) { // reimposta il colore del bordo solo se isClicked è false
                                     for (int i = 0; i < gridButtons.length; i++) {
                                         for (int j = 0; j < gridButtons[i].length; j++) {
-                                            if (e.getSource() == gridButtons[i][j]) {
+                                            if (e.getSource() == gridButtons[i][j] && gridButtons[i][j].isEnabled()) {
                                                 if (j == 9) {
                                                     gridButtons[i][j].setBorder(original);
                                                     gridButtons[i][j-1].setBorder(original);
