@@ -57,6 +57,9 @@ public class Home extends JFrame implements ActionListener, WindowListener {
         exit_p.add(exit_b); //aggiunta del bottone exit al pannello exit
         exit_b.setFont(bold); //impostazione del font del bottone exit
 
+        scoreboard_b.setEnabled(false);
+        recentgames_b.setEnabled(false);
+
         setBounds(100, 100, 300, 300);
         setResizable(false);
         setVisible(true);
