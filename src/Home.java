@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,7 +70,7 @@ public class Home extends JFrame implements ActionListener, WindowListener {
         if (actionEvent.getSource() == newgame_b) {
             //new NewGame();
             try {
-                new PlayingFrame();
+                new ShipPlacement1();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -79,6 +78,9 @@ public class Home extends JFrame implements ActionListener, WindowListener {
         }
     }
 
+
+
+    //metodi inutilizzati
     @Override
     public void windowOpened(WindowEvent windowEvent) {
 

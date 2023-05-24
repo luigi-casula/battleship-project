@@ -1,16 +1,13 @@
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.border.Border;
 
-public class PlayingFrame extends JFrame implements ActionListener, WindowListener, MouseListener {
+public class ShipPlacement2 extends JFrame implements ActionListener, WindowListener, MouseListener {
 
     //dichiarazione delle immagini delle navi
     BufferedImage ship2x1 = ImageIO.read(new File("src/images/ship_2x1.png")); //cacciatorpediniere (3 di questa categoria)
@@ -30,6 +27,8 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
     int ship4x1_h = 90;
     int ship5x1_w = 339;
     int ship5x1_h = 86;
+
+    JLabel name = new JLabel("Player 2");
 
     //scaling delle immagini
     Image ship2x1_sc = ship2x1.getScaledInstance(ship2x1_w, ship2x1_h, Image.SCALE_SMOOTH);
@@ -64,7 +63,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
     private Border originalShip;
 
     //costruttore
-    public PlayingFrame() throws IOException {
+    public ShipPlacement2() throws IOException {
         super("Battleship - Playing");
         customizeFrame();
     }
@@ -79,8 +78,9 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         c.add(grid);
 
         //gestione pannello navi
-        ships.setLayout(new GridLayout(5,1,10,10));
+        ships.setLayout(new GridLayout(6,1,10,10));
         ships.setBorder(BorderFactory.createEmptyBorder(10,10,10,0));
+        ships.add(name);
         ships.add(ship2x1_l);
         ships.add(ship1_3x1_l);
         ships.add(ship2_3x1_l);
@@ -102,6 +102,9 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
         ship4x1_l.setBackground(new Color(238, 238, 238));
         ship5x1_l.setBorder(null);
         ship5x1_l.setBackground(new Color(238, 238, 238));
+
+        name.setFont(new Font("Arial", Font.BOLD, 30));
+        name.setHorizontalAlignment(JLabel.CENTER);
 
         ship2x1_l.addActionListener(this);
         ship1_3x1_l.addActionListener(this);
@@ -755,58 +758,7 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
 
     @Override
     public void mouseExited(MouseEvent e) {
-        /*if (ship2x1_l_state) {
-            for (int i = 0; i < gridButtons.length; i++) {
-                for (int j = 0; j < gridButtons[i].length; j++) {
-                    if (e.getSource() == gridButtons[i][j]) {
-                        if (j == 9) {
-                            gridButtons[i][j].setBorder(original);
-                            gridButtons[i][j-1].setBorder(original);
-                        }
-                        else if (j < 9) {
-                            gridButtons[i][j].setBorder(original);
-                            gridButtons[i][j+1].setBorder(original);
-                        }
-                    }
-                }
-            }
-        }
-        if (ship1_3x1_l_state) {
-            for (int i = 0; i < gridButtons.length; i++) {
-                for (int j = 0; j < gridButtons[i].length; j++) {
-                    if (e.getSource() == gridButtons[i][j]) {
-                        gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,0)));
-                    }
-                }
-            }
-        }
-        if (ship2_3x1_l_state) {
-            for (int i = 0; i < gridButtons.length; i++) {
-                for (int j = 0; j < gridButtons[i].length; j++) {
-                    if (e.getSource() == gridButtons[i][j]) {
-                        gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,0,255)));
-                    }
-                }
-            }
-        }
-        if (ship4x1_l_state) {
-            for (int i = 0; i < gridButtons.length; i++) {
-                for (int j = 0; j < gridButtons[i].length; j++) {
-                    if (e.getSource() == gridButtons[i][j]) {
-                        gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(255,255,0)));
-                    }
-                }
-            }
-        }
-        if (ship5x1_l_state) {
-            for (int i = 0; i < gridButtons.length; i++) {
-                for (int j = 0; j < gridButtons[i].length; j++) {
-                    if (e.getSource() == gridButtons[i][j]) {
-                        gridButtons[i][j].setBorder(BorderFactory.createLineBorder(new Color(0,255,255)));
-                    }
-                }
-            }
-        }*/
+
     }
 
     @Override
@@ -863,5 +815,4 @@ public class PlayingFrame extends JFrame implements ActionListener, WindowListen
     public void mouseReleased(MouseEvent e) {
 
     }
-
 }
