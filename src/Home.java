@@ -69,11 +69,7 @@ public class Home extends JFrame implements ActionListener, WindowListener {
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == newgame_b) {
             //new NewGame();
-            try {
-                new ShipPlacement1();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            new NewGame();
             dispose();
         }
     }

@@ -28,8 +28,6 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
     int ship5x1_w = 339;
     int ship5x1_h = 86;
 
-    JLabel name = new JLabel("Player 1");
-
     //scaling delle immagini
     Image ship2x1_sc = ship2x1.getScaledInstance(ship2x1_w, ship2x1_h, Image.SCALE_SMOOTH);
     Image ship1_3x1_sc = ship1_3x1.getScaledInstance(ship1_3x1_w, ship1_3x1_h, Image.SCALE_SMOOTH);
@@ -51,6 +49,8 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
     boolean ship4x1_l_state = false;
     boolean ship5x1_l_state = false;
 
+    JLabel name;
+    JLabel name2;
 
     JButton[][] gridButtons = new JButton[10][10];
 
@@ -63,8 +63,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
     private Border originalShip;
 
     //costruttore
-    public ShipPlacement1() throws IOException {
+    public ShipPlacement1(String p1, String p2) throws IOException {
         super("Battleship - Playing");
+        name.setText(p1);
+        name2.setText(p2);
         customizeFrame();
     }
 
@@ -103,14 +105,14 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
         ship5x1_l.setBorder(null);
         ship5x1_l.setBackground(new Color(238, 238, 238));
 
-        name.setFont(new Font("Arial", Font.BOLD, 30));
-        name.setHorizontalAlignment(JLabel.CENTER);
-
         ship2x1_l.addActionListener(this);
         ship1_3x1_l.addActionListener(this);
         ship2_3x1_l.addActionListener(this);
         ship4x1_l.addActionListener(this);
         ship5x1_l.addActionListener(this);
+
+        name.setFont(new Font("Arial", Font.BOLD, 30));
+        name.setHorizontalAlignment(JLabel.CENTER);
 
         //gestione pannello griglia
         grid.setLayout(new GridLayout(10,10));
@@ -699,9 +701,9 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 ship5x1_l_state = false;
                                             }
                                             try {
-                                                new ShipPlacement2();
-                                            } catch (IOException ignored) {
-
+                                                new ShipPlacement2(name2.getText());
+                                            } catch (IOException ex) {
+                                                throw new RuntimeException(ex);
                                             }
                                             dispose();
                                         }

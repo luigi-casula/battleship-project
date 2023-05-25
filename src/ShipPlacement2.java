@@ -28,7 +28,7 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
     int ship5x1_w = 339;
     int ship5x1_h = 86;
 
-    JLabel name = new JLabel("Player 2");
+    JLabel name;
 
     //scaling delle immagini
     Image ship2x1_sc = ship2x1.getScaledInstance(ship2x1_w, ship2x1_h, Image.SCALE_SMOOTH);
@@ -63,8 +63,9 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
     private Border originalShip;
 
     //costruttore
-    public ShipPlacement2() throws IOException {
+    public ShipPlacement2(String p2) throws IOException {
         super("Battleship - Playing");
+        name.setText(p2);
         customizeFrame();
     }
 
