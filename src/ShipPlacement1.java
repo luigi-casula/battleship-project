@@ -1,8 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -49,8 +48,11 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
     boolean ship4x1_l_state = false;
     boolean ship5x1_l_state = false;
 
-    JLabel name;
-    JLabel name2;
+    int x1, y1, x2, y2, x3, y3, x4, y4, x5, y5; //coordinate iniziali delle navi
+    int _x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4, _x5, _y5; //coordinate finali delle navi
+
+    JLabel name = new JLabel();
+    JLabel name2 = new JLabel();
 
     JButton[][] gridButtons = new JButton[10][10];
 
@@ -186,6 +188,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j-1].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
                                                 gridButtons[i][j].setEnabled(false);
                                                 gridButtons[i][j-1].setEnabled(false);
+                                                x1 = i;
+                                                y1 = j-1;
+                                                _x1 = i;
+                                                _y1 = j;
                                                 ship2x1_l.setBorder(originalShip);
                                                 ship2x1_l.setEnabled(false);
                                                 ship1_3x1_l.setEnabled(true);
@@ -200,6 +206,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j+1].setBorder(BorderFactory.createLineBorder(new Color(255,0,0)));
                                                 gridButtons[i][j].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
+                                                x1 = i;
+                                                y1 = j;
+                                                _x1 = i;
+                                                _y1 = j+1;
                                                 ship2x1_l.setBorder(originalShip);
                                                 ship2x1_l.setEnabled(false);
                                                 ship1_3x1_l.setEnabled(true);
@@ -269,6 +279,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j].setEnabled(false);
                                                 gridButtons[i][j-1].setEnabled(false);
                                                 gridButtons[i][j-2].setEnabled(false);
+                                                x2 = i;
+                                                y2 = j-2;
+                                                _x2 = i;
+                                                _y2 = j;
                                                 ship1_3x1_l.setBorder(originalShip);
                                                 ship1_3x1_l.setEnabled(false);
                                                 ship2_3x1_l.setEnabled(true);
@@ -282,6 +296,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j].setEnabled(false);
                                                 gridButtons[i][j-1].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
+                                                x2 = i;
+                                                y2 = j-1;
+                                                _x2 = i;
+                                                _y2 = j+1;
                                                 ship1_3x1_l.setBorder(originalShip);
                                                 ship1_3x1_l.setEnabled(false);
                                                 ship2_3x1_l.setEnabled(true);
@@ -295,6 +313,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
                                                 gridButtons[i][j+2].setEnabled(false);
+                                                x2 = i;
+                                                y2 = j;
+                                                _x2 = i;
+                                                _y2 = j+2;
                                                 ship1_3x1_l.setBorder(originalShip);
                                                 ship1_3x1_l.setEnabled(false);
                                                 ship2_3x1_l.setEnabled(true);
@@ -369,6 +391,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j].setEnabled(false);
                                                 gridButtons[i][j-1].setEnabled(false);
                                                 gridButtons[i][j-2].setEnabled(false);
+                                                x3 = i;
+                                                y3 = j-2;
+                                                _x3 = i;
+                                                _y3 = j;
                                                 ship2_3x1_l.setBorder(originalShip);
                                                 ship2_3x1_l.setEnabled(false);
                                                 ship4x1_l.setEnabled(true);
@@ -382,6 +408,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j].setEnabled(false);
                                                 gridButtons[i][j-1].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
+                                                x3 = i;
+                                                y3 = j-1;
+                                                _x3 = i;
+                                                _y3 = j+1;
                                                 ship2_3x1_l.setBorder(originalShip);
                                                 ship2_3x1_l.setEnabled(false);
                                                 ship4x1_l.setEnabled(true);
@@ -395,6 +425,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
                                                 gridButtons[i][j+2].setEnabled(false);
+                                                x3 = i;
+                                                y3 = j;
+                                                _x3 = i;
+                                                _y3 = j+2;
                                                 ship2_3x1_l.setBorder(originalShip);
                                                 ship2_3x1_l.setEnabled(false);
                                                 ship4x1_l.setEnabled(true);
@@ -481,6 +515,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j-1].setEnabled(false);
                                                 gridButtons[i][j-2].setEnabled(false);
                                                 gridButtons[i][j-3].setEnabled(false);
+                                                x4 = i;
+                                                y4 = j-3;
+                                                _x4 = i;
+                                                _y4 = j;
                                                 ship4x1_l.setBorder(originalShip);
                                                 ship4x1_l.setEnabled(false);
                                                 ship5x1_l.setEnabled(true);
@@ -496,6 +534,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j-1].setEnabled(false);
                                                 gridButtons[i][j-2].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
+                                                x4 = i;
+                                                y4 = j-2;
+                                                _x4 = i;
+                                                _y4 = j+1;
                                                 ship4x1_l.setBorder(originalShip);
                                                 ship4x1_l.setEnabled(false);
                                                 ship5x1_l.setEnabled(true);
@@ -511,6 +553,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j-1].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
                                                 gridButtons[i][j+2].setEnabled(false);
+                                                x4 = i;
+                                                y4 = j-1;
+                                                _x4 = i;
+                                                _y4 = j+2;
                                                 ship4x1_l.setBorder(originalShip);
                                                 ship4x1_l.setEnabled(false);
                                                 ship5x1_l.setEnabled(true);
@@ -526,6 +572,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j+1].setEnabled(false);
                                                 gridButtons[i][j+2].setEnabled(false);
                                                 gridButtons[i][j+3].setEnabled(false);
+                                                x4 = i;
+                                                y4 = j;
+                                                _x4 = i;
+                                                _y4 = j+3;
                                                 ship4x1_l.setBorder(originalShip);
                                                 ship4x1_l.setEnabled(false);
                                                 ship5x1_l.setEnabled(true);
@@ -637,6 +687,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j-2].setEnabled(false);
                                                 gridButtons[i][j-3].setEnabled(false);
                                                 gridButtons[i][j-4].setEnabled(false);
+                                                x5 = i;
+                                                y5 = j-4;
+                                                _x5 = i;
+                                                _y5 = j;
                                                 ship5x1_l.setBorder(originalShip);
                                                 ship5x1_l_state = false;
                                             }
@@ -652,6 +706,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j-2].setEnabled(false);
                                                 gridButtons[i][j-3].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
+                                                x5 = i;
+                                                y5 = j-3;
+                                                _x5 = i;
+                                                _y5 = j+1;
                                                 ship5x1_l.setBorder(originalShip);
                                                 ship5x1_l_state = false;
                                             }
@@ -667,6 +725,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j-2].setEnabled(false);
                                                 gridButtons[i][j+1].setEnabled(false);
                                                 gridButtons[i][j+2].setEnabled(false);
+                                                x5 = i;
+                                                y5 = j-2;
+                                                _x5 = i;
+                                                _y5 = j+2;
                                                 ship5x1_l.setBorder(originalShip);
                                                 ship5x1_l_state = false;
                                             }
@@ -682,6 +744,10 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j+1].setEnabled(false);
                                                 gridButtons[i][j+2].setEnabled(false);
                                                 gridButtons[i][j+3].setEnabled(false);
+                                                x5 = i;
+                                                y5 = j-1;
+                                                _x5 = i;
+                                                _y5 = j+3;
                                                 ship5x1_l.setBorder(originalShip);
                                                 ship5x1_l_state = false;
                                             }
@@ -697,8 +763,25 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 gridButtons[i][j+2].setEnabled(false);
                                                 gridButtons[i][j+3].setEnabled(false);
                                                 gridButtons[i][j+4].setEnabled(false);
+                                                x5 = i;
+                                                y5 = j;
+                                                _x5 = i;
+                                                _y5 = j+4;
                                                 ship5x1_l.setBorder(originalShip);
                                                 ship5x1_l_state = false;
+                                            }
+                                            //scrivi su file le posizioni delle navi, separate da virgola
+                                            try {
+                                                FileWriter fw = new FileWriter("ships1.txt", false);
+                                                BufferedWriter w = new BufferedWriter(fw);
+                                                w.write("2," + x1 + "," + y1 + "," + _x1 + "," + _y1 + "\n");
+                                                w.write("3," + x2 + "," + y2 + "," + _x2 + "," + _y2 + "\n");
+                                                w.write("3," + x3 + "," + y3 + "," + _x3 + "," + _y3 + "\n");
+                                                w.write("4," + x4 + "," + y4 + "," + _x4 + "," + _y4 + "\n");
+                                                w.write("5," + x5 + "," + y5 + "," + _x5 + "," + _y5 + "\n");
+                                                w.close();
+                                            } catch (IOException ex) {
+                                                throw new RuntimeException(ex);
                                             }
                                             try {
                                                 new ShipPlacement2(name2.getText());

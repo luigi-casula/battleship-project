@@ -52,6 +52,15 @@ public class NewGame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //check if the text fields are empty
+        if (p1_t.getText().isEmpty() || p2_t.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Riempi i campi", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if (p1_t.getText().equals(p2_t.getText())) {
+            JOptionPane.showMessageDialog(this, "I nomi dei giocatori non possono essere uguali", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         try {
             new ShipPlacement1(p1_t.getText(), p2_t.getText());
         } catch (IOException ex) {
