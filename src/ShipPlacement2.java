@@ -789,6 +789,7 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
                                             } catch (IOException ex) {
                                                 throw new RuntimeException(ex);
                                             }
+                                            dispose();
                                         }
                                     }
                                 }
