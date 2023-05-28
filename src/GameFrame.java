@@ -1,16 +1,28 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class GameFrame extends JFrame {
+public class GameFrame extends JFrame implements ActionListener, MouseListener, WindowListener {
 
     private Ship[] ships_p1 = new Ship[5];
     private Ship[] ships_p2 = new Ship[5];
 
-    public GameFrame() throws IOException {
+    JLabel p1_l = new JLabel("");
+    JLabel p2_l = new JLabel("");
+
+    JButton[][] gridButtons = new JButton[10][10];
+
+    JPanel player_p = new JPanel(); //pannello contenente il nome del giocatore
+    JPanel grid = new JPanel(); //pannello contenente la griglia
+
+
+    public GameFrame(String name1, String name2) throws IOException {
         super("Battleship");
+        p1_l.setText("Turno di " + name1);
+        p2_l.setText("Turno di " + name2);
         customizeFrame();
         shipsManager();
     }
@@ -50,12 +62,102 @@ public class GameFrame extends JFrame {
 
     public void customizeFrame() {
         Container c = getContentPane();
-        setBounds(100,100,500,500);
+        c.setLayout(new BorderLayout(10,10));
+        c.add(player_p, BorderLayout.NORTH);
+        c.add(grid, BorderLayout.CENTER);
+
+        player_p.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        player_p.add(p1_l);
+        p1_l.setFont(new Font("Arial", Font.BOLD, 24));
+
+        grid.setLayout(new GridLayout(10,10));
+
+        for (int i = 0; i < gridButtons.length; i++) {
+            for (int j = 0; j < gridButtons[i].length; j++) {
+                gridButtons[i][j] = new JButton();
+                //gridButtons[i][j].addMouseListener(this);
+                grid.add(gridButtons[i][j]);
+            }
+        }
+
+        setBounds(100,100,500,550);
         setVisible(true);
         setResizable(false);
+    }
 
+    @Override
+    public void windowClosing(WindowEvent e) {
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Sei sicuro di voler uscire? Tornerai alla Home.","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            new Home();
+            dispose();
+        }
+        else {
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
     }
 
 
+    //metodi inutilizzati
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
+    }
 }

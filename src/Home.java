@@ -55,10 +55,13 @@ public class Home extends JFrame implements ActionListener, WindowListener {
         exit_p.setLayout(new FlowLayout()); //definizione del layout manager del pannello exit
         exit_p.add(exit_b); //aggiunta del bottone exit al pannello exit
         exit_b.setFont(bold); //impostazione del font del bottone exit
+        exit_b.addActionListener(this); //aggiunta del listener al bottone exit
 
         scoreboard_b.setEnabled(false);
         recentgames_b.setEnabled(false);
 
+        addWindowListener(this); //aggiunta del listener alla finestra
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setBounds(100, 100, 300, 300);
         setResizable(false);
         setVisible(true);
@@ -66,12 +69,18 @@ public class Home extends JFrame implements ActionListener, WindowListener {
 
     }
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == newgame_b) {
-            //new NewGame();
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == newgame_b) {
             new NewGame();
             dispose();
+        } else if (e.getSource() == exit_b) {
+            System.exit(0);
         }
+    }
+
+    @Override
+    public void windowClosing(WindowEvent windowEvent) {
+        System.exit(0);
     }
 
 
@@ -79,11 +88,6 @@ public class Home extends JFrame implements ActionListener, WindowListener {
     //metodi inutilizzati
     @Override
     public void windowOpened(WindowEvent windowEvent) {
-
-    }
-
-    @Override
-    public void windowClosing(WindowEvent windowEvent) {
 
     }
 

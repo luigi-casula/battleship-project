@@ -31,6 +31,7 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
     int ship5x1_h = 86;
 
     JLabel name = new JLabel();
+    JLabel _name = new JLabel();
 
     //scaling delle immagini
     Image ship2x1_sc = ship2x1.getScaledInstance(ship2x1_w, ship2x1_h, Image.SCALE_SMOOTH);
@@ -67,9 +68,10 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
     private Border originalShip;
 
     //costruttore
-    public ShipPlacement2(String p2) throws IOException {
+    public ShipPlacement2(String p1, String p2) throws IOException {
         super("Battleship - Playing");
         name.setText(p2);
+        _name.setText(p1);
         customizeFrame();
     }
 
@@ -133,6 +135,8 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
         originalShip = ship2x1_l.getBorder();
 
         //altri parametri della finestra
+        addWindowListener(this); //aggiunta del listener alla finestra
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
         setBounds(100,100, 1000, 500);
     }
@@ -785,7 +789,7 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
                                                 throw new RuntimeException(ex);
                                             }
                                             try {
-                                                new GameFrame();
+                                                new GameFrame(_name.getText(), name.getText());
                                             } catch (IOException ex) {
                                                 throw new RuntimeException(ex);
                                             }
@@ -849,6 +853,24 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
     }
 
     @Override
+    public void windowClosing(WindowEvent e) {
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Sei sicuro di voler uscire? Tornerai alla Home.","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            new Home();
+            dispose();
+        }
+        else {
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }
+
+
+
+
+    //metodi inutilizzati
+
+    @Override
     public void mouseExited(MouseEvent e) {
 
     }
@@ -858,18 +880,8 @@ public class ShipPlacement2 extends JFrame implements ActionListener, WindowList
 
     }
 
-
-
-
-    //metodi inutilizzati
-
     @Override
     public void windowOpened(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowClosing(WindowEvent e) {
 
     }
 

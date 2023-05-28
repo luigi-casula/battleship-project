@@ -2,9 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 
-public class NewGame extends JFrame implements ActionListener {
+public class NewGame extends JFrame implements ActionListener, WindowListener {
 
     JLabel p1_l = new JLabel("Player 1");
     JLabel p2_l = new JLabel("Player 2");
@@ -45,6 +47,8 @@ public class NewGame extends JFrame implements ActionListener {
         start_p.add(start);
         start.addActionListener(this);
 
+        addWindowListener(this); //aggiunta del listener alla finestra
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setBounds(100,100,500, 200);
         setResizable(false);
         setVisible(true);
@@ -67,5 +71,41 @@ public class NewGame extends JFrame implements ActionListener {
             throw new RuntimeException(ex);
         }
         dispose();
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+         new Home();
+         dispose();
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 }

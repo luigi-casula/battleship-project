@@ -132,6 +132,9 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
         originalShip = ship2x1_l.getBorder();
 
         //altri parametri della finestra
+        addWindowListener(this); //aggiunta del listener alla finestra
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
         setBounds(100,100, 1000, 500);
     }
@@ -784,7 +787,7 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
                                                 throw new RuntimeException(ex);
                                             }
                                             try {
-                                                new ShipPlacement2(name2.getText());
+                                                new ShipPlacement2(name.getText(), name2.getText());
                                             } catch (IOException ex) {
                                                 throw new RuntimeException(ex);
                                             }
@@ -848,6 +851,22 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
     }
 
     @Override
+    public void windowClosing(WindowEvent e) {
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Sei sicuro di voler uscire? Tornerai alla Home.","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            new Home();
+            dispose();
+        }
+        else {
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }
+
+
+    //metodi inutilizzati
+
+    @Override
     public void mouseExited(MouseEvent e) {
 
     }
@@ -857,18 +876,8 @@ public class ShipPlacement1 extends JFrame implements ActionListener, WindowList
 
     }
 
-
-
-
-    //metodi inutilizzati
-
     @Override
     public void windowOpened(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowClosing(WindowEvent e) {
 
     }
 
