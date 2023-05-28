@@ -65,8 +65,9 @@ public class NewGame extends JFrame implements ActionListener, WindowListener {
             JOptionPane.showMessageDialog(this, "I nomi dei giocatori non possono essere uguali", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
         try {
-            new ShipPlacement1(p1_t.getText(), p2_t.getText());
+            new ShipPlacement(1);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

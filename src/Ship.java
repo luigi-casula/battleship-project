@@ -1,13 +1,26 @@
-public class Ship {
-    int length; //lunghezza della nave
-    int pos_x; //posizione orizzontale della nave
-    int pos_y; //posizione verticale della nave
+import javax.swing.*;
+import java.awt.*;
+import java.util.Vector;
+
+public class Ship extends JButton {
+    Vector<GridButton> usedButtons = new Vector<>();
+    Color shipColor;
+
+    boolean state;
+    boolean placeable;
+
+    int length;
+    int x;
+    int y;
 
     //costruttore
-    public Ship (int length, int pos_x, int pos_y) {
-        this.length = length;
-        this.pos_x = pos_x;
-        this.pos_y = pos_y;
+    public Ship() {
+
+    }
+
+    public void setLength() {
+        this.length = Math.round((float) this.getIcon().getIconWidth() / 75);
+        System.out.printf("Length: " + length);
     }
 
     public int getLength() {
@@ -15,12 +28,20 @@ public class Ship {
     }
 
     public int getPos_x() {
-        return pos_x;
+        return x;
     }
 
     public int getPos_y() {
-        return pos_y;
+        return y;
     }
 
+    public Color getShipColor() {
+        return this.shipColor;
+    }
+
+    public void setShipColor(Color shipColor) {
+        this.shipColor = shipColor;
+        this.setBorder(BorderFactory.createLineBorder(this.shipColor));
+    }
 
 }

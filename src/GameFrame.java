@@ -24,28 +24,6 @@ public class GameFrame extends JFrame implements MouseListener, WindowListener {
     }
 
     public void shipsManager() throws IOException {
-        BufferedReader br1 = new BufferedReader(new FileReader("ships1.txt"));
-        BufferedReader br2 = new BufferedReader(new FileReader("ships2.txt"));
-        String line;
-        int i = 0;
-        int j = 0;
-        while ((line = br1.readLine()) != null) {
-            String[] data = line.split(",");
-            int pos_x = Integer.parseInt(data[1]);
-            int pos_y = Integer.parseInt(data[2]);
-            Globals.ships_p1[i] = new Ship(Integer.parseInt(data[0]), pos_x, pos_y);
-            i++;
-        }
-        while ((line = br2.readLine()) != null) {
-            String[] data = line.split(",");
-            int pos_x = Integer.parseInt(data[1]);
-            int pos_y = Integer.parseInt(data[2]);
-            Globals.ships_p2[j] = new Ship(Integer.parseInt(data[0]), pos_x, pos_y);
-            j++;
-        }
-        br1.close();
-        br2.close();
-
         for (int k = 0; k < 5; k++) {
             System.out.println(Globals.ships_p1[k].getLength() + " " + Globals.ships_p1[k].getPos_x() + " " + Globals.ships_p1[k].getPos_y());
         }
@@ -67,10 +45,9 @@ public class GameFrame extends JFrame implements MouseListener, WindowListener {
 
         grid.setLayout(new GridLayout(10, 10));
 
-        for (int i = 0; i < Globals.gridButtons.length; i++) {
-            for (int j = 0; j < Globals.gridButtons[i].length; j++) {
-                Globals.gridButtons[i][j] = new JButton();
-                grid.add(Globals.gridButtons[i][j]);
+        for (int i = 0; i < Globals.gridButtons_p1.length; i++) {
+            for (int j = 0; j < Globals.gridButtons_p1[i].length; j++) {
+                grid.add(Globals.gridButtons_p1[i][j]);
             }
         }
 
