@@ -19,6 +19,7 @@ public class NewGame extends JFrame implements ActionListener, WindowListener {
 
     Font defaultFont = new Font("Arial", Font.PLAIN, 16); //dichiarazione Font generale
     Font bold = defaultFont.deriveFont(Font.BOLD, 18); //dichiarazione Font grassetto
+
     public NewGame() {
         super("New Game");
         customizeFrame();
@@ -26,12 +27,12 @@ public class NewGame extends JFrame implements ActionListener, WindowListener {
 
     public void customizeFrame() {
         Container c = getContentPane();
-        c.setLayout(new BorderLayout(10,10));
+        c.setLayout(new BorderLayout(10, 10));
 
         c.add(names_p, BorderLayout.CENTER);
         c.add(start_p, BorderLayout.SOUTH);
 
-        names_p.setLayout(new GridLayout(2,2,10,10));
+        names_p.setLayout(new GridLayout(2, 2, 10, 10));
         names_p.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         names_p.add(p1_l);
         p1_l.setFont(bold);
@@ -49,7 +50,7 @@ public class NewGame extends JFrame implements ActionListener, WindowListener {
 
         addWindowListener(this); //aggiunta del listener alla finestra
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setBounds(100,100,500, 200);
+        setBounds(100, 100, 500, 200);
         setResizable(false);
         setVisible(true);
     }
@@ -60,8 +61,7 @@ public class NewGame extends JFrame implements ActionListener, WindowListener {
         if (p1_t.getText().isEmpty() || p2_t.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Riempi i campi", "Error", JOptionPane.ERROR_MESSAGE);
             return;
-        }
-        else if (p1_t.getText().equals(p2_t.getText())) {
+        } else if (p1_t.getText().equals(p2_t.getText())) {
             JOptionPane.showMessageDialog(this, "I nomi dei giocatori non possono essere uguali", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -80,8 +80,8 @@ public class NewGame extends JFrame implements ActionListener, WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-         new Home();
-         dispose();
+        new Home();
+        dispose();
     }
 
     @Override

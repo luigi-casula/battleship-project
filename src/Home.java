@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
 
 public class Home extends JFrame implements ActionListener, WindowListener {
     JLabel title_l = new JLabel("Battleship"); //titolo
@@ -35,14 +34,14 @@ public class Home extends JFrame implements ActionListener, WindowListener {
         c.add(buttons_p, BorderLayout.CENTER); //aggiunta del pannello bottoni
         c.add(exit_p, BorderLayout.SOUTH); //aggiunta del pannello exit
 
-        title_p.setLayout(new BorderLayout(10,10)); //definizione del layout manager del pannello titolo
+        title_p.setLayout(new BorderLayout(10, 10)); //definizione del layout manager del pannello titolo
         title_p.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //definizione del bordo del pannello titolo
         title_p.add(title_l, BorderLayout.NORTH); //aggiunta del pannello titolo al pannello titolo
         title_l.setFont(bold); //impostazione del font del titolo
         title_p.add(credits_l, BorderLayout.SOUTH); //aggiunta del pannello crediti al pannello titolo
         credits_l.setFont(defaultFont); //impostazione del font dei crediti
 
-        buttons_p.setLayout(new GridLayout(3,1,10,10)); //definizione del layout manager del pannello bottoni
+        buttons_p.setLayout(new GridLayout(3, 1, 10, 10)); //definizione del layout manager del pannello bottoni
         buttons_p.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); //definizione del bordo del pannello bottoni
         buttons_p.add(newgame_b); //aggiunta del bottone nuova partita al pannello bottoni
         newgame_b.setFont(bold); //impostazione del font del bottone nuova partita
@@ -68,6 +67,7 @@ public class Home extends JFrame implements ActionListener, WindowListener {
 
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newgame_b) {
@@ -82,7 +82,6 @@ public class Home extends JFrame implements ActionListener, WindowListener {
     public void windowClosing(WindowEvent windowEvent) {
         System.exit(0);
     }
-
 
 
     //metodi inutilizzati

@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 
 public class GameFrame extends JFrame implements MouseListener, WindowListener {
@@ -54,10 +55,9 @@ public class GameFrame extends JFrame implements MouseListener, WindowListener {
     }
 
 
-
     public void customizeFrame() {
         Container c = getContentPane();
-        c.setLayout(new BorderLayout(10,10));
+        c.setLayout(new BorderLayout(10, 10));
         c.add(player_p, BorderLayout.NORTH);
         c.add(grid, BorderLayout.CENTER);
 
@@ -65,7 +65,7 @@ public class GameFrame extends JFrame implements MouseListener, WindowListener {
         player_p.add(p1_l);
         p1_l.setFont(new Font("Arial", Font.BOLD, 24));
 
-        grid.setLayout(new GridLayout(10,10));
+        grid.setLayout(new GridLayout(10, 10));
 
         for (int i = 0; i < Globals.gridButtons.length; i++) {
             for (int j = 0; j < Globals.gridButtons[i].length; j++) {
@@ -74,7 +74,7 @@ public class GameFrame extends JFrame implements MouseListener, WindowListener {
             }
         }
 
-        setBounds(100,100,500,550);
+        setBounds(100, 100, 500, 550);
         setVisible(true);
         setResizable(false);
     }
@@ -82,12 +82,11 @@ public class GameFrame extends JFrame implements MouseListener, WindowListener {
     @Override
     public void windowClosing(WindowEvent e) {
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Sei sicuro di voler uscire? Tornerai alla Home.","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler uscire? Tornerai alla Home.", "Warning", dialogButton);
+        if (dialogResult == JOptionPane.YES_OPTION) {
             new Home();
             dispose();
-        }
-        else {
+        } else {
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         }
     }
