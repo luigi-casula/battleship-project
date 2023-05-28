@@ -43,8 +43,8 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
         ships[4].setShipColor(new Color(75, 0, 130));
 
 
-        name.setText("coglione 1");
-        name2.setText("coglione 2");
+        name.setText("Player 1");
+        name2.setText("Player 2");
 
 
         customizeFrame();

@@ -106,11 +106,11 @@ public class GridButton extends JButton implements MouseListener {
                         if (i >= 0 && i < selectedGrid.length && j >= 0 && j < selectedGrid[i].length) {
                             GridButton currentCell = selectedGrid[i][j];
 
-                            // Exclude the ship cells from being grayed out
+                            // Escludo le celle delle navi
                             if (!placingShip.usedButtons.contains(currentCell)) {
                                 currentCell.setEnabled(false);
                                 currentCell.clicked = true;
-                                currentCell.setBackground(Color.GRAY);
+                                currentCell.setBackground(new Color(187, 246, 252));
                             }
                         }
                     }
