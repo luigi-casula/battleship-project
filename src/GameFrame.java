@@ -5,15 +5,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class GameFrame extends JFrame implements ActionListener, MouseListener, WindowListener {
-
-    private Ship[] ships_p1 = new Ship[5];
-    private Ship[] ships_p2 = new Ship[5];
+public class GameFrame extends JFrame implements MouseListener, WindowListener {
 
     JLabel p1_l = new JLabel("");
     JLabel p2_l = new JLabel("");
-
-    JButton[][] gridButtons = new JButton[10][10];
 
     JPanel player_p = new JPanel(); //pannello contenente il nome del giocatore
     JPanel grid = new JPanel(); //pannello contenente la griglia
@@ -37,24 +32,24 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener, 
             String[] data = line.split(",");
             int pos_x = Integer.parseInt(data[1]);
             int pos_y = Integer.parseInt(data[2]);
-            ships_p1[i] = new Ship(Integer.parseInt(data[0]), pos_x, pos_y);
+            Globals.ships_p1[i] = new Ship(Integer.parseInt(data[0]), pos_x, pos_y);
             i++;
         }
         while ((line = br2.readLine()) != null) {
             String[] data = line.split(",");
             int pos_x = Integer.parseInt(data[1]);
             int pos_y = Integer.parseInt(data[2]);
-            ships_p2[j] = new Ship(Integer.parseInt(data[0]), pos_x, pos_y);
+            Globals.ships_p2[j] = new Ship(Integer.parseInt(data[0]), pos_x, pos_y);
             j++;
         }
         br1.close();
         br2.close();
 
         for (int k = 0; k < 5; k++) {
-            System.out.println(ships_p1[k].getLength() + " " + ships_p1[k].getPos_x() + " " + ships_p1[k].getPos_y());
+            System.out.println(Globals.ships_p1[k].getLength() + " " + Globals.ships_p1[k].getPos_x() + " " + Globals.ships_p1[k].getPos_y());
         }
         for (int k = 0; k < 5; k++) {
-            System.out.println(ships_p2[k].getLength() + " " + ships_p2[k].getPos_x() + " " + ships_p2[k].getPos_y());
+            System.out.println(Globals.ships_p2[k].getLength() + " " + Globals.ships_p2[k].getPos_x() + " " + Globals.ships_p2[k].getPos_y());
         }
     }
 
@@ -72,11 +67,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener, 
 
         grid.setLayout(new GridLayout(10,10));
 
-        for (int i = 0; i < gridButtons.length; i++) {
-            for (int j = 0; j < gridButtons[i].length; j++) {
-                gridButtons[i][j] = new JButton();
-                //gridButtons[i][j].addMouseListener(this);
-                grid.add(gridButtons[i][j]);
+        for (int i = 0; i < Globals.gridButtons.length; i++) {
+            for (int j = 0; j < Globals.gridButtons[i].length; j++) {
+                Globals.gridButtons[i][j] = new JButton();
+                grid.add(Globals.gridButtons[i][j]);
             }
         }
 
@@ -100,11 +94,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener, 
 
 
     //metodi inutilizzati
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
