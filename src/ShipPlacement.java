@@ -10,7 +10,6 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
     Ship[] ships;
 
     JLabel name = new JLabel();
-    JLabel name2 = new JLabel();
 
     GridButton[][] gridButtons;
 
@@ -42,9 +41,7 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
         ships[3].setShipColor(new Color(255, 255, 0));
         ships[4].setShipColor(new Color(75, 0, 130));
 
-
         name.setText("Player 1");
-        name2.setText("Player 2");
 
 
         customizeFrame();
@@ -111,6 +108,8 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
                 gridButtons[i][j].placingMode(selectedShip, gridButtons);
             }
         }
+        //controlla se tutte le navi sono state posizionate
+
     }
 
     @Override
