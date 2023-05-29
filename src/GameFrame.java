@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
-
+//inutilizzato
 public class GameFrame extends JFrame implements MouseListener, WindowListener {
 
     JLabel p1_l = new JLabel("");
@@ -20,16 +20,6 @@ public class GameFrame extends JFrame implements MouseListener, WindowListener {
         p1_l.setText("Turno di " + name1);
         p2_l.setText("Turno di " + name2);
         customizeFrame();
-        shipsManager();
-    }
-
-    public void shipsManager() throws IOException {
-        for (int k = 0; k < 5; k++) {
-            System.out.println(Globals.ships_p1[k].getLength() + " " + Globals.ships_p1[k].getPos_x() + " " + Globals.ships_p1[k].getPos_y());
-        }
-        for (int k = 0; k < 5; k++) {
-            System.out.println(Globals.ships_p2[k].getLength() + " " + Globals.ships_p2[k].getPos_x() + " " + Globals.ships_p2[k].getPos_y());
-        }
     }
 
 

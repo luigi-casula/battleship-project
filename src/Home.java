@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
+//creazione della prima finestra
 public class Home extends JFrame implements ActionListener, WindowListener {
     JLabel title_l = new JLabel("Battleship"); //titolo
     JLabel credits_l = new JLabel("Luigi Casula, Lorenzo Caboni"); //crediti

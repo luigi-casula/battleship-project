@@ -3,15 +3,13 @@ import java.awt.*;
 import java.util.Vector;
 
 public class Ship extends JButton {
-    Vector<GridButton> usedButtons = new Vector<>();
-    Color shipColor;
+    Vector<GridButton> usedButtons = new Vector<>(); //vettore che contiene i bottoni utilizzati dalla nave
+    Color shipColor; //colore della nave in base alla sua lunghezza
 
-    boolean state;
-    boolean placeable;
+    boolean state; //inutilizzato
+    boolean placeable; //controlla se la nave è posizionabile
 
-    int length;
-    int x;
-    int y;
+    int length; //lunghezza della nave
 
     //costruttore
     public Ship() {
@@ -25,14 +23,6 @@ public class Ship extends JButton {
 
     public int getLength() {
         return length;
-    }
-
-    public int getPos_x() {
-        return x;
-    }
-
-    public int getPos_y() {
-        return y;
     }
 
     public Color getShipColor() {

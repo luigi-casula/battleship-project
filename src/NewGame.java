@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
-
+//crea una nuova finestra di gioco, chiede di inserire i nickname ed è attualmente inutilizzato
 public class NewGame extends JFrame implements ActionListener, WindowListener {
 
     JLabel p1_l = new JLabel("Player 1");

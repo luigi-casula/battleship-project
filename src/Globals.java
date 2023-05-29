@@ -1,4 +1,4 @@
-public class Globals {
+public class Globals { //classe che contiene le variabili globali
     public static Ship[] ships_p1 = new Ship[5];
     public static Ship[] ships_p2 = new Ship[5];
     public static GridButton[][] gridButtons_p1 = new GridButton[10][10];

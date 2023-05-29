@@ -32,10 +32,10 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
 
         for (int i = 0; i < ships.length; i++) {
             ships[i] = new Ship();
-            ships[i].setIcon(new ImageIcon(String.format("src/images/ship_%d.png", i + 1)));
+            ships[i].setIcon(new ImageIcon(String.format("src/images/ship_%d.png", i + 1))); //formattazione dell'immagine
             ships[i].setLength();
         }
-
+//colori di ogni nave
         ships[0].setShipColor(new Color(255, 0, 0));
         ships[1].setShipColor(new Color(0, 255, 0));
         ships[2].setShipColor(new Color(0, 0, 255));
@@ -114,7 +114,7 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
     }
 
     @Override
-    public void windowClosing(WindowEvent e) {
+    public void windowClosing(WindowEvent e) { //finestra di dialogo per la conferma della chiusura
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler uscire? Tornerai alla Home.", "Warning", dialogButton);
         if (dialogResult == JOptionPane.YES_OPTION) {
