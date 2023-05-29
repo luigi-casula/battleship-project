@@ -93,12 +93,11 @@ public class GridButton extends JButton implements MouseListener { //creazione d
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) { //colora lo sfondo dei bottori in base alla nave selezionata
+    public void mouseClicked(MouseEvent e) { //colora lo sfondo dei bottoni in base alla nave selezionata
         if (placingShip.placeable) {
             for (GridButton g : placingShip.usedButtons) {
                 g.setBackground(placingShip.shipColor);
                 g.setLinkedShip(placingShip);
-
                 g.setEnabled(false);
                 g.clicked = true;
 

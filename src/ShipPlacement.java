@@ -29,7 +29,7 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
             gridButtons = Globals.gridButtons_p2;
         }
 
-        for (int i = 0; i < ships.length; i++) { //creazionne degli oggetti di tipo nave
+        for (int i = 0; i < ships.length; i++) { //creazione degli oggetti di tipo nave
             ships[i] = new Ship();
             ships[i].setIcon(new ImageIcon(String.format("src/images/ship_%d.png", i + 1))); //formattazione dell'immagine
             ships[i].setLength();
