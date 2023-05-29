@@ -30,12 +30,12 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
             gridButtons = Globals.gridButtons_p2;
         }
 
-        for (int i = 0; i < ships.length; i++) {
+        for (int i = 0; i < ships.length; i++) { //creazionne degli oggetti di tipo nave
             ships[i] = new Ship();
             ships[i].setIcon(new ImageIcon(String.format("src/images/ship_%d.png", i + 1))); //formattazione dell'immagine
             ships[i].setLength();
         }
-//colori di ogni nave
+        //colori di ogni nave
         ships[0].setShipColor(new Color(255, 0, 0));
         ships[1].setShipColor(new Color(0, 255, 0));
         ships[2].setShipColor(new Color(0, 0, 255));
@@ -106,7 +106,7 @@ public class ShipPlacement extends JFrame implements ActionListener, WindowListe
     public void actionPerformed(ActionEvent e) {
         Ship selectedShip = (Ship) e.getSource();
 
-        for (int i = 0; i < gridButtons.length; i++) {
+        for (int i = 0; i < gridButtons.length; i++) { //richiama il metodo per il posizionamento delle navi
             for (int j = 0; j < gridButtons.length; j++) {
                 gridButtons[i][j].placingMode(selectedShip, gridButtons);
             }
